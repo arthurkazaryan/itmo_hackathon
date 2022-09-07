@@ -2,7 +2,7 @@ menu_items = [{'title': 'Главная', 'url_name': 'hackathon-home'},
               {'title': 'Команда', 'url_name': 'hackathon-team'}]
 user_unauthorized_items = [{'title': 'Регистрация', 'url_name': 'accounts-register'},
                            {'title': 'Войти', 'url_name': 'accounts-login'}]
-user_authorized_items = [{'title': 'Профиль', 'url_name': 'accounts-projects'},
+user_authorized_items = [{'title': 'Профиль', 'url_name': 'accounts-locations'},
                          {'title': 'Выход', 'url_name': 'accounts-logout'}]
 
 

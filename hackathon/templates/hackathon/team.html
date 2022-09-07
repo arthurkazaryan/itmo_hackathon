@@ -9,13 +9,15 @@
 
 {% block content %}
     <h1 class="text-title">Команда</h1>
-    {% for member in team_members %}
-    <div class="white-background team-members mb-10">
-        <img src="{{ member.photo }}" width="220" height="220">
-        <div class="team-description">
-            <p class="text-title"><b>{{ member.name }}</b> / <span class="text-description">{{ member.task }}</span></p>
-            <p class="text-description">{{ member.about }}</p>
+    <div class="team-grid">
+        {% for member in team_members %}
+        <div class="white-background team-members mb-10">
+            <img src="{{ member.photo }}" width="160" height="160">
+            <div class="team-description">
+                <p class="text-title"><b>{{ member.name }}</b> / {{ member.task }}</p>
+                <p class="text-description">{{ member.about }}</p>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 {% endblock %}

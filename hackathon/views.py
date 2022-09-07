@@ -27,7 +27,7 @@ def team(request):
             'name': 'Дмитрий Паршин',
             'task': 'Data Science',
             'photo': '/media/team/dmitry.png',
-            'about': '123'
+            'about': 'Per aspera ad astra'
         },
         {
             'name': 'Никита Сидельников',

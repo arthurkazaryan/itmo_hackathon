@@ -4,3 +4,10 @@
     align-items: center;
     padding: 10px;
 }
+
+.locations {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

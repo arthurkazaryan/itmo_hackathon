@@ -16,7 +16,6 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
     height: 60px;
 }
 
@@ -49,6 +48,10 @@ body {
 
 .mr-10 {
     margin-right: 10px;
+}
+
+.pd-10 {
+    padding: 10px;
 }
 
 /* BUTTONS */

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import uuid
 
 
 # Create your models here.
@@ -17,3 +18,81 @@ class Profile(models.Model):
     class Meta:
         verbose_name = 'Профиль'
         verbose_name_plural = 'Профили'
+
+
+class UserLocation(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
+    location_uuid = models.UUIDField(
+        default=uuid.uuid4,
+        editable=False,
+        verbose_name='UUID локации',
+        unique=True,
+    )
+    title = models.CharField(
+        max_length=255,
+        verbose_name='Название локации'
+    )
+    address = models.CharField(
+        max_length=255,
+        verbose_name='Адрес'
+    )
+    status = models.CharField(
+        max_length=16,
+        verbose_name='Статус'
+    )
+    date = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Дата добавления'
+    )
+
+    def __str__(self):
+        return f"{self.title} | {self.user.username}"
+
+    class Meta:
+        verbose_name = 'Локация'
+        verbose_name_plural = 'Локации'
+
+
+class LocationCamera(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
+    location = models.ForeignKey(
+        UserLocation,
+        on_delete=models.CASCADE,
+    )
+    camera_uuid = models.UUIDField(
+        default=uuid.uuid4,
+        editable=False,
+        verbose_name='UUID камеры',
+        unique=True,
+    )
+    video = models.FileField(
+        default='',
+        upload_to='accounts/camera_video',
+        null=True,
+        blank=True
+    )
+    title = models.CharField(
+        max_length=255,
+        verbose_name='Название камеры'
+    )
+    status = models.CharField(
+        max_length=16,
+        verbose_name='Статус'
+    )
+    date = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Дата добавления'
+    )
+
+    def __str__(self):
+        return f"{self.title} | {self.user.username}"
+
+    class Meta:
+        verbose_name = 'Камера'
+        verbose_name_plural = 'Камеры'

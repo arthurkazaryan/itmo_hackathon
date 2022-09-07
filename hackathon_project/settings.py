@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'hackathon.apps.HackathonConfig',
     'tgbot.apps.TgbotConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
