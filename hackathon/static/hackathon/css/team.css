@@ -1,0 +1,11 @@
+.team-members {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.team-description {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
