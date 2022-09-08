@@ -2,3 +2,5 @@ django
 djangorestframework
 markdown
 django-filter
+aiogram
+python-dotenv

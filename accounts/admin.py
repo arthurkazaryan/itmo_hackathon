@@ -35,6 +35,6 @@ class LocationCameraAdmin(admin.ModelAdmin):
 
 @admin.register(CustomerDataRegistration)
 class CustomerDataRegistrationAdmin(admin.ModelAdmin):
-    list_display = ('user', 'camera', 'count', 'warnings', 'mean_time')
-    # readonly_fields = ('user', 'camera', 'count', 'warnings', 'mean_time')
+    list_display = ('user', 'camera', 'count', 'warning_flag', 'date')
+    # readonly_fields = ('user', 'camera', 'count', 'warning', 'time')
     search_fields = ('user__username',)

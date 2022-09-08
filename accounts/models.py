@@ -111,23 +111,17 @@ class CustomerDataRegistration(models.Model):
     count = models.PositiveIntegerField(
         verbose_name='Количество посетителей'
     )
-    warnings = models.PositiveIntegerField(
-        verbose_name='Количество нарушений'
+    warning_flag = models.BooleanField(
+        verbose_name='Нарушение',
+        editable=True
     )
-    mean_time = models.PositiveIntegerField(
-        verbose_name='Среднее время'
-    )
-    date_from = models.DateTimeField(
-        verbose_name='Начало'
-    )
-    date_to = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='Конец'
+    date = models.DateTimeField(
+        verbose_name='Время фиксации'
     )
 
     def __str__(self):
         return f"{self.camera.title} | Нарушения"
 
     class Meta:
-        verbose_name = 'Регистрация пользователей'
+        verbose_name = 'Регистрация посетителей'
         verbose_name_plural = 'Регистрация посетителей'

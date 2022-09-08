@@ -18,10 +18,22 @@ def team(request):
     }
     team_members = [
         {
+            'name': 'Никита Сидельников',
+            'task': 'Team Lead, ML, Backend',
+            'photo': '/media/team/nikita.png',
+            'about': 'Не знаю то, чего знаю'
+        },
+        {
             'name': 'Артур Казарян',
             'task': 'Frontend, Backend',
             'photo': '/media/team/arthur.png',
             'about': 'Хочу оливье'
+        },
+        {
+            'name': 'Ренат Шакиров',
+            'task': 'ML, Product',
+            'photo': '/media/team/renat.png',
+            'about': 'Знаю то, чего не знаю'
         },
         {
             'name': 'Дмитрий Паршин',
@@ -29,18 +41,6 @@ def team(request):
             'photo': '/media/team/dmitry.png',
             'about': 'Per aspera ad astra'
         },
-        {
-            'name': 'Никита Сидельников',
-            'task': 'Data Science, Backend',
-            'photo': '/media/team/nikita.png',
-            'about': '123'
-        },
-        {
-            'name': 'Ренат Шакиров',
-            'task': 'Data Science, Backend',
-            'photo': '/media/team/renat.png',
-            'about': '123'
-        }
     ]
     menu_context.update({'title': 'Команда', 'current_page': 'hackathon-team', 'team_members': team_members})
     return render(request, 'hackathon/team.html', context=menu_context)
