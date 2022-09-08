@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin import display
-from accounts.models import Profile, UserLocation
+from accounts.models import Profile, UserLocation, LocationCamera, CustomerDataRegistration
 
 
 @admin.register(Profile)
@@ -23,4 +23,18 @@ class ProfileAdmin(admin.ModelAdmin):
 class UserLocationAdmin(admin.ModelAdmin):
     list_display = ('user', 'location_uuid', 'title', 'address', 'status', 'date')
     # readonly_fields = ('user', 'location_uuid', 'date')
+    search_fields = ('user__username',)
+
+
+@admin.register(LocationCamera)
+class LocationCameraAdmin(admin.ModelAdmin):
+    list_display = ('user', 'location', 'camera_uuid', 'video', 'title', 'status', 'date')
+    # readonly_fields = ('user', 'location', 'camera_uuid', 'video', 'date')
+    search_fields = ('user__username',)
+
+
+@admin.register(CustomerDataRegistration)
+class CustomerDataRegistrationAdmin(admin.ModelAdmin):
+    list_display = ('user', 'camera', 'count', 'warnings', 'mean_time')
+    # readonly_fields = ('user', 'camera', 'count', 'warnings', 'mean_time')
     search_fields = ('user__username',)

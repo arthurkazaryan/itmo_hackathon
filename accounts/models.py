@@ -7,9 +7,10 @@ import uuid
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     chat_id = models.PositiveIntegerField(
-        verbose_name='ID чата',
+        verbose_name='Telegram ID',
         unique=True,
-        default=0
+        blank=True,
+        null=True
     )
 
     def __str__(self):
@@ -96,3 +97,37 @@ class LocationCamera(models.Model):
     class Meta:
         verbose_name = 'Камера'
         verbose_name_plural = 'Камеры'
+
+
+class CustomerDataRegistration(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
+    camera = models.ForeignKey(
+        LocationCamera,
+        on_delete=models.CASCADE,
+    )
+    count = models.PositiveIntegerField(
+        verbose_name='Количество посетителей'
+    )
+    warnings = models.PositiveIntegerField(
+        verbose_name='Количество нарушений'
+    )
+    mean_time = models.PositiveIntegerField(
+        verbose_name='Среднее время'
+    )
+    date_from = models.DateTimeField(
+        verbose_name='Начало'
+    )
+    date_to = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Конец'
+    )
+
+    def __str__(self):
+        return f"{self.camera.title} | Нарушения"
+
+    class Meta:
+        verbose_name = 'Регистрация пользователей'
+        verbose_name_plural = 'Регистрация посетителей'
