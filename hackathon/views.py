@@ -19,7 +19,7 @@ def team(request):
     team_members = [
         {
             'name': 'Никита Сидельников',
-            'task': 'Team Lead, ML, Backend',
+            'task': 'Team Lead, ML',
             'photo': '/media/team/nikita.png',
             'about': 'Не знаю то, чего знаю'
         },
@@ -31,13 +31,13 @@ def team(request):
         },
         {
             'name': 'Ренат Шакиров',
-            'task': 'ML, Product',
+            'task': 'Product, Backend',
             'photo': '/media/team/renat.png',
             'about': 'Знаю то, чего не знаю'
         },
         {
             'name': 'Дмитрий Паршин',
-            'task': 'Data Science',
+            'task': 'Product Research',
             'photo': '/media/team/dmitry.png',
             'about': 'Per aspera ad astra'
         },

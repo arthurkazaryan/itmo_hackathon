@@ -16,17 +16,17 @@
             <video class="video-object small" width="938" controls preload="metadata">
                 <source src="/media/{{ camera.video }}" type="video/mp4"/>
             </video>
-        <form class="form-container mt-10" target="_blank" action="/api/v1/post/customers" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% for form in request_form %}
-                <div class="form-button">
-                    <label class="text-description" for="{{ form.id_for_label }}">{{ form.label }}</label>
-                    <div>{{ form }}</div>
-                    <div>{{ form.errors }}</div>
-                </div>
-            {% endfor %}
-            <button type="submit" class="button color form-small">Send request</button>
-        </form>
+<!--        <form class="form-container mt-10" target="_blank" action="/api/v1/post/customers" method="post" enctype="multipart/form-data">-->
+<!--            {% csrf_token %}-->
+<!--            {% for form in request_form %}-->
+<!--                <div class="form-button">-->
+<!--                    <label class="text-description" for="{{ form.id_for_label }}">{{ form.label }}</label>-->
+<!--                    <div>{{ form }}</div>-->
+<!--                    <div>{{ form.errors }}</div>-->
+<!--                </div>-->
+<!--            {% endfor %}-->
+<!--            <button type="submit" class="button color form-small">Send request</button>-->
+<!--        </form>-->
         <table class="mt-10" width="100%" border="1" bordercolor="gray" cellpadding="5" cellspacing="0s">
             <td class="text-description">Посетителей</td>
             <td class="text-description">Нарушение</td>
