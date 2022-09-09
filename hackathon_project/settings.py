@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)htch8q04trr*htr4hqj-+$tqjv%4#02=jg0h#u!wb!q_e7zph
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '1df9-77-234-205-3.eu.ngrok.io']
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '3fef-77-234-205-3.eu.ngrok.io']
 
 
 # Application definition
@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     'tgbot.apps.TgbotConfig',
     'rest_framework'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -135,3 +141,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'accounts-login'
 LOGIN_URL = 'accounts-login'
+
+# DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240

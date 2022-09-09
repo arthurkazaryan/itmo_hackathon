@@ -1,19 +1,16 @@
-from pathlib import Path
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.files.storage import default_storage
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, TemplateView, UpdateView
 from django.shortcuts import render
 from accounts.forms import RegistrationForm, LoginForm
-from accounts.models import UserLocation
+from accounts.models import UserLocation, LocationCamera, CustomerDataRegistration
+from accounts.forms import SendAPIForm
 from hackathon.utils import DataMixin
-from operator import attrgetter
-from itertools import chain
 
 
 class RegisterUser(DataMixin, CreateView):
@@ -84,11 +81,25 @@ class LocationPage(DataMixin, TemplateView, LoginRequiredMixin):
         if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse_lazy(self.get_login_url()))
 
-        # locations = UserLocation.objects.filter(user=request.user).order_by('-date')
+        location_id = kwargs['id']
+        user_location = get_object_or_404(UserLocation, user=request.user, id=location_id)
+        user_cameras = LocationCamera.objects.filter(user=request.user, location=user_location)
+        camera_table = CustomerDataRegistration.objects.filter(user=request.user).order_by('-date')
+        request_form = SendAPIForm(
+            initial={
+                'count': 6,
+                'warning_flag': True,
+                'user': 1,
+                'camera': 1,
+            }
+        )
 
         context = self.get_user_context(
             user=request.user,
-            # locations=locations
+            location=user_location,
+            user_cameras=user_cameras,
+            request_form=request_form,
+            camera_table=camera_table
         )
 
         return render(request, self.template_name, context=context)
